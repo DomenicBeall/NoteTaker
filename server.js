@@ -18,7 +18,7 @@ app.use(express.static('public'));
 
 // HTML routes
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/notes.html'));
+  res.sendFile(path.join(__dirname, 'public/html/notes.html'));
 });
 
 app.get('/api/notes', (req, res) => {
@@ -30,7 +30,7 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'public/html/index.html'));
 });
 
 // POST routes
