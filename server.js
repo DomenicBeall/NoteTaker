@@ -1,6 +1,8 @@
 // Load dependencies
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+const nanoid = require('nanoid');
 
 // Create constants
 const app = express();
@@ -10,26 +12,30 @@ const PORT = 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// An array of notes
-const notes = [
-  {
-    title: "Test Note 1",
-    body: "Test note 1 body"
-  },
-  {
-    title: "Test Note 2",
-    body: "Test note 2 body"
-  }
-];
+// Expose the public directory
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/home.html'));
-})
+// HTML routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
-app.get('/api/getNotes', (req, res) => {
+app.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/notes.html'));
+});
+
+// POST routes
+app.post('/api/setNote', (req, res) => {
+  
+});
+
+// API routes
+app.get('/api/notes', (req, res) => {
   res.json(notes);
-})
+});
 
+
+// Start the server listening
 app.listen(PORT, () => {
   console.log(`Server is listening at ${PORT}`)
-})
+});
