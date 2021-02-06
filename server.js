@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const nanoid = require('nanoid');
+const { json } = require('express');
 
 // Create constants
 const app = express();
@@ -16,22 +17,32 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // HTML routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
-});
-
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 
-// POST routes
-app.post('/api/setNote', (req, res) => {
-  
+app.get('/api/notes', (req, res) => {
+  // Should read the db.json file and return all saved notes as JSON
+  const db = JSON.parse(fs.readFileSync('db.json', { encoding:'utf-8' }));
+
+  res.type('application/json');
+  res.json(db);
 });
 
-// API routes
-app.get('/api/notes', (req, res) => {
-  res.json(notes);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
+// POST routes
+app.post('/api/notes', (req, res) => {
+  // Should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
+  const note = req.body;
+
+  const db = JSON.parse(fs.readFileSync('db.json', { encoding:'utf-8' }));
+  
+  fs.writeFileSync("db.json", JSON.stringify([...db, note]));
+
+  res.json(req.body);
 });
 
 
