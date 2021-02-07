@@ -1,5 +1,6 @@
 :root {
     --primary: rgb(255, 145, 0);
+    --secondary: rgb(255, 170, 58);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -11,9 +12,12 @@ header {
     background-color: var(--primary);
     color: white;
     display: flex;
-    padding: 30px;
+    height: 20%;
     align-items: center;
     justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: black 2px solid;
 }
 
 i {
@@ -21,3 +25,46 @@ i {
     padding-left: 30px;
     font-size: 40px;
 }
+
+.notelist {
+    width: 30%;
+    background-color: yellow;
+    overflow-y: auto;
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+    float: left;
+}
+
+.notecontainer {
+    padding-left: 20px;
+    float: left;
+}
+
+li {
+    height: 40px;
+    border-bottom: black 2px solid;
+    padding: 10px;
+    color: white;
+    background-color: var(--secondary);
+}
+
+html, body {
+    height: 100%;
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+  }
+
+*::-webkit-scrollbar-track {
+    background: var(--primary);
+    border-left: black 2px solid;
+    border-right: black 2px solid;
+  }
+  
+*::-webkit-scrollbar-thumb {
+    background-color: white;
+    border: black 2px solid;
+ 
+  }
