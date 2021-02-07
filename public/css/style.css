@@ -1,0 +1,23 @@
+:root {
+    --primary: rgb(255, 145, 0);
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    display: flex;
+    padding: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+i {
+    padding-right: 30px;
+    padding-left: 30px;
+    font-size: 40px;
+}
