@@ -3,6 +3,7 @@
     --secondary: rgb(255, 170, 58);
     --tertiary: rgb(255, 192, 110);
     font-family: 'Roboto', sans-serif;
+    color: white;
 }
 
 body {
