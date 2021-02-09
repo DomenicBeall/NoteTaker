@@ -1,6 +1,7 @@
 :root {
     --primary: rgb(255, 145, 0);
     --secondary: rgb(255, 170, 58);
+    --tertiary: rgb(255, 192, 110);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -28,7 +29,7 @@ i {
 
 .notelist {
     width: 30%;
-    background-color: yellow;
+    background-color: var(--secondary);
     overflow-y: auto;
     height: 80%;
     overflow: scroll;
@@ -52,18 +53,24 @@ input[type="text"]
     padding-top: 10px;
 }
 
-textarea:focus, input:focus{
-    outline: none;
+textarea:focus, input:focus, textarea, input::placeholder, textarea::placeholder{
+    outline: 0;
+    color: white;
+    border: none;
 }
 
 #note-body
 {
     font-size:24px;
+    background-color: var(--tertiary);
+    color: white;
 }
 
 #note-title
 {
     font-size:48px;
+    background-color: var(--tertiary);
+    color: white;
 }
 
 .note {
@@ -72,12 +79,13 @@ textarea:focus, input:focus{
     padding: 10px;
     padding-left: 30px;
     color: white;
-    background-color: var(--secondary);
+    background-color: var(--tertiary);
     line-height: 40px;
 }
 
 html, body {
     height: 100%;
+    background-color: var(--tertiary);
 }
 
 *::-webkit-scrollbar {
