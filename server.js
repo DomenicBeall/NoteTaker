@@ -4,10 +4,11 @@ const path = require('path');
 const fs = require('fs');
 const { nanoid } = require('nanoid');
 const { json } = require('express');
+const { env } = require('process');
 
 // Create constants
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 // Sending JSON: Note to self: RESEARCH THIS TO UNDERSTAND IT vvvvv
 app.use(express.urlencoded({ extended: true }));
