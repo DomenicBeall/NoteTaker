@@ -22,7 +22,27 @@ function loadNotes() {
             const listNote = document.createElement(`div`);
             listNote.setAttribute("class", "note");
             listNote.setAttribute("data-noteid", data[i].id);
+            
             listNote.innerText = data[i].title;
+
+            let icon = document.createElement('i');
+            icon.setAttribute("class", "fas fa-trash-alt right");
+            
+            icon.addEventListener("click", () => {
+                fetch(`/api/note/${data[i].id}`, {
+                    method: 'DELETE',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body: {
+                        id: data[i].id
+                    }
+                }).then((response) => {
+                    location.reload();
+                });
+            });
+
+            listNote.append(icon);
 
             listNote.addEventListener("click", () => {
 
@@ -34,7 +54,13 @@ function loadNotes() {
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    noteTitle.setAttribute("disabled", true);
+                    noteBody.setAttribute("disabled", true);
+
+                    noteTitle.value = data.title;
+                    noteBody.value = data.body;
+
+                    saveBtn.style.display = "none";
                 });
 
             });
@@ -55,6 +81,8 @@ newNoteBtn.addEventListener('click', () => {
 
     noteTitle.removeAttribute("disabled");
     noteBody.removeAttribute("disabled");
+
+    saveBtn.style.display = "initial";
 });
 
 
@@ -79,4 +107,6 @@ saveBtn.addEventListener('click', () => {
     .catch((error) => {
         console.error(error);
     });
+
+    location.reload();
 });

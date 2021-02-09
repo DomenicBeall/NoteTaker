@@ -31,6 +31,7 @@ app.get('/api/notes', (req, res) => {
 
 app.get('/api/note/:id', (req, res) => {
   const id = req.params.id;
+
   // Should read the db.json file and return all saved notes as JSON
   const db = JSON.parse(fs.readFileSync('db.json', { encoding:'utf-8' }));
 
@@ -58,6 +59,24 @@ app.post('/api/notes', (req, res) => {
   res.json(req.body);
 });
 
+// DELETE route
+app.delete('/api/note/:id', (req, res) => {
+  const id = req.params.id;
+  console.log("Deleting " + id);
+
+  // Should read the db.json file and return all saved notes as JSON
+  const db = fs.readFileSync('db.json', { encoding:'utf-8' });
+
+  var index = list.map(x => {
+    return x.Id;
+  }).indexOf(id);
+  
+  list.splice(index, 1);
+
+  fs.writeFileSync("db.json", JSON.stringify(db));
+
+  res.send("Deleted entry with id: " + id);
+});
 
 // Start the server listening
 app.listen(PORT, () => {
