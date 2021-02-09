@@ -8,6 +8,23 @@ const noteList = document.getElementById('note-list');
 
 loadNotes();
 
+noteTitle.addEventListener('input', () => {
+    if (noteTitle.value === "") {
+        saveBtn.style.display = "none";
+    } else if (noteBody.value !== "") {
+        saveBtn.style.display = "initial";
+    }
+});
+
+noteBody.addEventListener('input', () => {
+    console.log(noteBody.value);
+    if (noteBody.value === "") {
+        saveBtn.style.display = "none";
+    } else if (noteTitle.value !== "") {
+        saveBtn.style.display = "initial";
+    }
+});
+
 function loadNotes() {
     
     fetch(`/api/notes`, {
@@ -71,6 +88,9 @@ function loadNotes() {
         console.error(error);
     });
 
+    saveBtn.style.display = "none";
+    
+
 }
 
 
@@ -80,8 +100,6 @@ newNoteBtn.addEventListener('click', () => {
 
     noteTitle.removeAttribute("disabled");
     noteBody.removeAttribute("disabled");
-
-    saveBtn.style.display = "initial";
 });
 
 
