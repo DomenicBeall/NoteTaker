@@ -20,31 +20,20 @@
         <h1 class="inline">Note Taker</h1>
 
         <icons>
-            <i class="fas fa-save"></i>
-            <i class="fas fa-pencil-alt"></i>
+            <i class="fas fa-save" id="save-btn"></i>
+            <i class="fas fa-pencil-alt" id="new-note-btn"></i>
         </icons>
     </header>
 
     <!-- LIST FLOATED TO THE LEFT -->
-    <div class="notelist">
-        <li>Note 1</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
-        <li>Note 2</li>
+    <div class="notelist" id="note-list">
     </div>
 
     <!-- NOTE DISPLAY -->
     <div class="notecontainer">
-        <h1>Note Title</h1>
-        <h4>Note Content</h4>
+        <input type="text" id="note-title" placeholder="Note Title">
+        <br><br>
+        <input type="text" id="note-body" placeholder="Note Text">
     </div>
 </body>
 <script src="../js/script.js"></script>
