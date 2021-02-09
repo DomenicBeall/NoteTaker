@@ -17,7 +17,6 @@ noteTitle.addEventListener('input', () => {
 });
 
 noteBody.addEventListener('input', () => {
-    console.log(noteBody.value);
     if (noteBody.value === "") {
         saveBtn.style.display = "none";
     } else if (noteTitle.value !== "") {
