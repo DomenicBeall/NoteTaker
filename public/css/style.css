@@ -57,6 +57,7 @@ textarea:focus, input:focus, textarea, input::placeholder, textarea::placeholder
     outline: 0;
     color: white;
     border: none;
+    font-family: inherit;
 }
 
 #note-body
