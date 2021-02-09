@@ -28,14 +28,13 @@ function loadNotes() {
             let icon = document.createElement('i');
             icon.setAttribute("class", "fas fa-trash-alt right");
             
-            icon.addEventListener("click", () => {
-                fetch(`/api/note/${data[i].id}`, {
+            icon.addEventListener("click", (e) => {
+                e.stopPropagation();
+
+                fetch(`/api/note/delete/${data[i].id}`, {
                     method: 'DELETE',
                     headers: {
                     'Content-Type': 'application/json',
-                    },
-                    body: {
-                        id: data[i].id
                     }
                 }).then((response) => {
                     location.reload();
